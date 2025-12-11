@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>INFO 202 Interactive Playground</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <h1>INFO 202 Interactive Playground</h1>
+      <p>
+        Play with collections, categories, and metadata through small demos.
+      </p>
+      <nav class="hero-nav">
+        <a href="#quiz">Quiz Mode</a>
+        <a href="#audio">Audio Cards</a>
+        <a href="#demos">Interactive Demos</a>
+      </nav>
+    </header>
+
+    <!-- Quiz Section -->
+    <section id="quiz" class="section">
+      <h2>Quiz Mode</h2>
+      <p>Test your understanding of weeks 1–6.</p>
+      <div id="quiz-container"></div>
+      <div class="quiz-footer">
+        <button id="next-question-btn">Next Question</button>
+        <div id="quiz-progress"></div>
+      </div>
+    </section>
+
+    <!-- Audio Cards Section -->
+    <section id="audio" class="section">
+      <h2>Audio Concept Cards</h2>
+      <p>Short explanations to revisit core ideas.</p>
+      <div id="audio-cards"></div>
+    </section>
+
+    <!-- Demos Section -->
+    <section id="demos" class="section">
+      <h2>Interactive Demos</h2>
+
+      <!-- 1 Prototype Slider -->
+      <div class="demo">
+        <h3>Prototype Typicality Slider</h3>
+        <p>
+          Explore how some category members feel more typical than others. Move
+          the slider to hide less typical examples.
+        </p>
+        <label>
+          Category:
+          <select id="proto-category-select">
+            <option value="bird">Bird</option>
+            <option value="furniture">Furniture</option>
+          </select>
+        </label>
+
+        <label class="slider-label">
+          Minimum typicality:
+          <input type="range" id="proto-slider" min="0" max="100" value="50" />
+          <span id="proto-threshold-label">50</span>
+        </label>
+
+        <div id="proto-items" class="chip-row"></div>
+        <p class="demo-note" id="proto-note"></p>
+      </div>
+
+      <!-- 2 Hierarchy vs Facets -->
+      <div class="demo">
+        <h3>Hierarchy vs Faceted Filters</h3>
+        <p>
+          Same birds, two different organizing structures. Try to find the same
+          bird in each view.
+        </p>
+
+        <div class="tabs">
+          <button class="tab-button active" data-tab="hierarchy-tab">
+            Hierarchy View
+          </button>
+          <button class="tab-button" data-tab="facets-tab">Faceted View</button>
+        </div>
+
+        <div id="hierarchy-tab" class="tab-panel active">
+          <p class="demo-note">
+            Hierarchy: you must choose
+            <strong>Sound → Habitat → Beak</strong> in order.
+          </p>
+          <div class="filters">
+            <label>
+              Sound:
+              <select id="h-sound-select">
+                <option value="">Any</option>
+                <option value="chirps">chirps</option>
+                <option value="caws">caws</option>
+                <option value="sings">sings</option>
+              </select>
+            </label>
+            <label>
+              Habitat:
+              <select id="h-habitat-select">
+                <option value="">Any</option>
+                <option value="swimmer">swimmer</option>
+                <option value="tree">tree</option>
+                <option value="ground">ground</option>
+              </select>
+            </label>
+            <label>
+              Beak:
+              <select id="h-beak-select">
+                <option value="">Any</option>
+                <option value="stubby">stubby</option>
+                <option value="long">long</option>
+              </select>
+            </label>
+          </div>
+          <div id="hierarchy-results" class="chip-row"></div>
+        </div>
+
+        <div id="facets-tab" class="tab-panel">
+          <p class="demo-note">
+            Facets: filters are independent; start with whichever attribute you
+            know.
+          </p>
+          <div class="filters">
+            <label>
+              Sound:
+              <select id="f-sound-select">
+                <option value="">Any</option>
+                <option value="chirps">chirps</option>
+                <option value="caws">caws</option>
+                <option value="sings">sings</option>
+              </select>
+            </label>
+            <label>
+              Habitat:
+              <select id="f-habitat-select">
+                <option value="">Any</option>
+                <option value="swimmer">swimmer</option>
+                <option value="tree">tree</option>
+                <option value="ground">ground</option>
+              </select>
+            </label>
+            <label>
+              Beak:
+              <select id="f-beak-select">
+                <option value="">Any</option>
+                <option value="stubby">stubby</option>
+                <option value="long">long</option>
+              </select>
+            </label>
+          </div>
+          <div id="facets-results" class="chip-row"></div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>Built as an INFO 202 implementation project.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
