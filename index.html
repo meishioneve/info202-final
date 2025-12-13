@@ -8,155 +8,181 @@
   </head>
   <body>
     <header class="hero">
-      <h1>INFO 202 Interactive Playground</h1>
-      <p>
-        Play with collections, categories, and metadata through small demos.
-      </p>
-      <nav class="hero-nav">
-        <a href="#quiz">Quiz Mode</a>
-        <a href="#audio">Audio Cards</a>
-        <a href="#demos">Interactive Demos</a>
-      </nav>
+      <div class="hero-header">
+        <h1 class="hero-logo">INFO 202 Playground</h1>
+      </div>
+      <div class="hero-content">
+        <h2 class="hero-title">INFO 202 Playground</h2>
+        <p class="hero-description">
+          Play your way through core concepts: categorization, metadata, IR, and more.
+        </p>
+        <div class="hero-cards">
+          <a href="#quiz" class="hero-card card-quiz">
+            <div class="card-icon">🧩</div>
+            <h3>Quiz Mode</h3>
+            <p>Test your knowledge with Kahoot-style quiz games</p>
+          </a>
+          <a href="#audio" class="hero-card card-audio">
+            <div class="card-icon">🎧</div>
+            <h3>Concept Cards & Audio</h3>
+            <p>Learn with short explanation cards and audio guides</p>
+          </a>
+          <a href="#demos" class="hero-card card-demos">
+            <div class="card-icon">📚</div>
+            <h3>Interactive Demos</h3>
+            <p>Explore concepts with sliders and drag-and-drop activities</p>
+          </a>
+        </div>
+        <div class="concepts-section">
+          <h3 class="concepts-title">Concepts Covered</h3>
+          <div class="concepts-tags">
+            <span class="concept-tag">Information as Thing</span>
+            <span class="concept-tag">Controlled Vocabularies</span>
+            <span class="concept-tag">Prototype Theory</span>
+            <span class="concept-tag">Hierarchical vs. Faceted Categories</span>
+            <span class="concept-tag">Vocabulary Problem</span>
+            <span class="concept-tag">Metadata & Schema</span>
+            <span class="concept-tag">Information Retrieval</span>
+          </div>
+        </div>
+      </div>
     </header>
 
     <!-- Quiz Section -->
-    <section id="quiz" class="section">
-      <h2>Quiz Mode</h2>
-      <p>Test your understanding of weeks 1–6.</p>
+    <section id="quiz" class="quiz-section">
+      <div class="quiz-header">
+        <a href="#" class="back-to-home" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">← Back to Home</a>
+        <div class="quiz-stats">
+          <div class="timer">
+            <span class="timer-icon">🕐</span>
+            <span id="timer-display">2:30</span>
+          </div>
+          <div class="streak">
+            <span class="streak-icon">🔥</span>
+            <span>Streak: <span id="streak-count">0</span></span>
+          </div>
+        </div>
+      </div>
+      <div class="quiz-progress-card">
+        <div id="quiz-progress-text">Question 1 of 3</div>
+        <div class="progress-bar">
+          <div id="progress-fill" class="progress-fill"></div>
+        </div>
+      </div>
       <div id="quiz-container"></div>
-      <div class="quiz-footer">
-        <button id="next-question-btn">Next Question</button>
-        <div id="quiz-progress"></div>
+      <div id="quiz-feedback-card" class="quiz-feedback-card hidden">
+        <div id="feedback-content"></div>
+        <button id="next-question-btn" class="next-question-btn">Next Question</button>
       </div>
     </section>
 
     <!-- Audio Cards Section -->
-    <section id="audio" class="section">
-      <h2>Audio Concept Cards</h2>
-      <p>Short explanations to revisit core ideas.</p>
-      <div id="audio-cards"></div>
+    <section id="audio" class="audio-section">
+      <div class="audio-header">
+        <a href="#" class="back-to-home" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">← Back to Home</a>
+      </div>
+      <h2 class="audio-title">Concept Cards & Audio</h2>
+      <div class="audio-progress-text" id="audio-progress-text">Card 1 of 4</div>
+      <div id="audio-cards" class="audio-card-container"></div>
+      <div class="audio-navigation">
+        <button id="audio-prev-btn" class="audio-nav-btn audio-prev-btn">← Previous</button>
+        <div class="audio-pagination-dots" id="audio-pagination-dots"></div>
+        <button id="audio-next-btn" class="audio-nav-btn audio-next-btn">Next ></button>
+      </div>
     </section>
 
     <!-- Demos Section -->
-    <section id="demos" class="section">
-      <h2>Interactive Demos</h2>
-
+    <section id="demos" class="demos-section">
       <!-- 1 Prototype Slider -->
-      <div class="demo">
-        <h3>Prototype Typicality Slider</h3>
-        <p>
-          Explore how some category members feel more typical than others. Move
-          the slider to hide less typical examples.
-        </p>
-        <label>
-          Category:
-          <select id="proto-category-select">
-            <option value="bird">Bird</option>
-            <option value="furniture">Furniture</option>
-          </select>
-        </label>
-
-        <label class="slider-label">
-          Minimum typicality:
-          <input type="range" id="proto-slider" min="0" max="100" value="50" />
-          <span id="proto-threshold-label">50</span>
-        </label>
-
-        <div id="proto-items" class="chip-row"></div>
-        <p class="demo-note" id="proto-note"></p>
+      <div id="prototype-demo" class="demo-page">
+        <div class="demo-header">
+          <a href="#" class="back-to-home" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">← Back to Home</a>
+          <button class="next-demo-btn" onclick="document.getElementById('hierarchy-demo').scrollIntoView({behavior: 'smooth'});">Next Demo →</button>
+        </div>
+        <h2 class="demo-title">Prototype Theory: Typicality of Furniture</h2>
+        <p class="demo-subtitle">Move the slider to explore which items are considered "typical" furniture.</p>
+        
+        <div class="prototype-interactive-card">
+          <div class="slider-container">
+            <div class="slider-labels">
+              <span class="slider-label-left">Less typical</span>
+              <span class="slider-label-right">More typical</span>
+            </div>
+            <div class="slider-wrapper">
+              <div class="threshold-indicator" id="threshold-indicator">Threshold: 5</div>
+              <input type="range" id="proto-slider" min="0" max="10" value="5" class="prototype-slider" />
+            </div>
+          </div>
+          <div id="proto-items" class="proto-items-grid"></div>
+        </div>
+        
+        <div class="demo-explanation-card">
+          <h3 class="explanation-title">Understanding Prototype Theory</h3>
+          <p id="proto-explanation-text" class="explanation-text"></p>
+          <h4 class="explanation-subtitle">Key Insight</h4>
+          <p class="explanation-text">Categories aren't defined by rigid rules—they have fuzzy boundaries and graded membership. An armchair is "more furniture" than a beanbag, even though both can be considered furniture. This affects how people search, browse, and organize information.</p>
+        </div>
       </div>
 
       <!-- 2 Hierarchy vs Facets -->
-      <div class="demo">
-        <h3>Hierarchy vs Faceted Filters</h3>
-        <p>
-          Same birds, two different organizing structures. Try to find the same
-          bird in each view.
-        </p>
-
-        <div class="tabs">
-          <button class="tab-button active" data-tab="hierarchy-tab">
-            Hierarchy View
-          </button>
-          <button class="tab-button" data-tab="facets-tab">Faceted View</button>
+      <div id="hierarchy-demo" class="demo-page">
+        <div class="demo-header">
+          <a href="#" class="back-to-home" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">← Back to Home</a>
         </div>
-
-        <div id="hierarchy-tab" class="tab-panel active">
-          <p class="demo-note">
-            Hierarchy: you must choose
-            <strong>Sound → Habitat → Beak</strong> in order.
-          </p>
-          <div class="filters">
-            <label>
-              Sound:
-              <select id="h-sound-select">
-                <option value="">Any</option>
-                <option value="chirps">chirps</option>
-                <option value="caws">caws</option>
-                <option value="sings">sings</option>
-              </select>
-            </label>
-            <label>
-              Habitat:
-              <select id="h-habitat-select">
-                <option value="">Any</option>
-                <option value="swimmer">swimmer</option>
-                <option value="tree">tree</option>
-                <option value="ground">ground</option>
-              </select>
-            </label>
-            <label>
-              Beak:
-              <select id="h-beak-select">
-                <option value="">Any</option>
-                <option value="stubby">stubby</option>
-                <option value="long">long</option>
-              </select>
-            </label>
+        <div class="demo-top-row">
+          <div>
+            <h2 class="demo-title">Hierarchical vs. Faceted Categories</h2>
+            <p class="demo-subtitle">Try switching between hierarchical and faceted to see how retrieval changes</p>
           </div>
-          <div id="hierarchy-results" class="chip-row"></div>
+          <div class="demo-toggle-buttons">
+            <button class="demo-toggle-btn active" id="hierarchical-toggle" data-view="hierarchical">
+              <span class="toggle-icon">☰</span> Hierarchical
+            </button>
+            <button class="demo-toggle-btn" id="faceted-toggle" data-view="faceted">
+              <span class="toggle-icon">⚲</span> Faceted
+            </button>
+          </div>
         </div>
 
-        <div id="facets-tab" class="tab-panel">
-          <p class="demo-note">
-            Facets: filters are independent; start with whichever attribute you
-            know.
-          </p>
-          <div class="filters">
-            <label>
-              Sound:
-              <select id="f-sound-select">
-                <option value="">Any</option>
-                <option value="chirps">chirps</option>
-                <option value="caws">caws</option>
-                <option value="sings">sings</option>
-              </select>
-            </label>
-            <label>
-              Habitat:
-              <select id="f-habitat-select">
-                <option value="">Any</option>
-                <option value="swimmer">swimmer</option>
-                <option value="tree">tree</option>
-                <option value="ground">ground</option>
-              </select>
-            </label>
-            <label>
-              Beak:
-              <select id="f-beak-select">
-                <option value="">Any</option>
-                <option value="stubby">stubby</option>
-                <option value="long">long</option>
-              </select>
-            </label>
-          </div>
-          <div id="facets-results" class="chip-row"></div>
+        <div class="demo-explanation-card demo-explanation-inline">
+          <h3 class="explanation-title" id="hierarchy-explanation-title">Hierarchical Organization</h3>
+          <p id="hierarchy-explanation-text" class="explanation-text">In hierarchical systems, items belong to one path in a tree structure. Users must navigate through predetermined branches. This works well for predictable browsing but can be limiting when items could fit multiple categories.</p>
         </div>
+
+        <div id="hierarchical-view" class="demo-two-columns active">
+          <div class="demo-filter-card">
+            <h3 class="filter-card-title"><span class="filter-icon">☰</span> Hierarchical Tree</h3>
+            <div id="hierarchy-tree" class="hierarchy-tree"></div>
+          </div>
+          <div class="demo-results-card">
+            <div class="results-header">
+              <h3 class="results-title">Results</h3>
+              <span class="results-count" id="hierarchy-results-count">0 items</span>
+            </div>
+            <div class="results-path" id="hierarchy-path">Current path: Media</div>
+            <div id="hierarchy-results" class="results-list"></div>
+          </div>
+        </div>
+
+        <div id="faceted-view" class="demo-two-columns">
+          <div class="demo-filter-card">
+            <h3 class="filter-card-title"><span class="filter-icon">⚲</span> Faceted Filters</h3>
+            <div id="faceted-filters" class="faceted-filters"></div>
+          </div>
+          <div class="demo-results-card">
+            <div class="results-header">
+              <h3 class="results-title">Results</h3>
+              <span class="results-count" id="facets-results-count">0 items</span>
+            </div>
+            <div id="facets-results" class="results-list"></div>
+          </div>
+        </div>
+
       </div>
     </section>
 
     <footer class="footer">
-      <p>Built as an INFO 202 implementation project.</p>
+      <p>Built as an INFO 202 final project.</p>
     </footer>
 
     <script src="script.js"></script>
