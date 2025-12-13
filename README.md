@@ -36,3 +36,5 @@ This is a course project, not a production app, so expect some rough edges.
 ## Future Directions
 
 In the future, this could evolve into a more general study platform where students upload their own course materials (slides, readings, recordings) and the app automatically generates multiple study modes — quizzes, audio, and interactive demos — on top of that content, especially for theory-heavy or liberal-arts classes.
+
+#### Detailed documentation: https://docs.google.com/document/d/1RLX8Nrg9VcreZu8HK5-lSZkwpnliJTR5o3Ksd7KfY5E/edit?usp=sharing 
